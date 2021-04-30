@@ -13,6 +13,41 @@ import (
 
 func main() {
 	fmt.Println("Starting bot...")
+	const helpMessage = `SFW
+	/neko
+	/lewdneko
+	/sfwfoxes
+	/wallpapers
+	/mobileWallpapers
+	NSFW
+	/hentai
+	/ass
+	/bdsm
+	/cum
+	/doujin
+	/femdom
+	/maid
+	/orgy
+	/panties
+	/nsfwwallpapers
+	/nsfwmobilewallpapers
+	/netorare
+	/gif
+	/blowjob
+	/feet
+	/pussy
+	/uglybastard
+	/uniform
+	/gangbang
+	/foxgirl
+	/cumslut
+	/glasses
+	/thighs
+	/tentacles
+	/masturbation
+	/school
+	/yuri
+	/zettairyouiki`
 
 	//Bot options
 	b, err := tb.NewBot(tb.Settings{
@@ -28,8 +63,7 @@ func main() {
 		cron("/start", m.Chat.FirstName)
 	})
 	b.Handle("/help", func(m *tb.Message) {
-		b.Send(m.Sender, `
-		`)
+		b.Send(m.Sender, helpMessage)
 		cron("/help", m.Chat.FirstName)
 	})
 	b.Handle("/ass", func(m *tb.Message) {
@@ -194,11 +228,11 @@ func main() {
 		b.Send(m.Sender, photo)
 		cron("/yuri", m.Chat.FirstName)
 	})
-	b.Handle("/zettai-ryouiki", func(m *tb.Message) {
+	b.Handle("/zettairyouiki", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("zettai-ryouiki"))}
 
 		b.Send(m.Sender, photo)
-		cron("/zettai-ryouiki", m.Chat.FirstName)
+		cron("/zettairyouiki", m.Chat.FirstName)
 	})
 
 	//SFW
