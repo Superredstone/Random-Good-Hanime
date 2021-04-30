@@ -18,5 +18,7 @@ jobs:
       with:
         go-version: 1.15
 
-    - name: Build
-      run: go build -v ./...
+    - name: BuildWindows
+      run: env GOOS=windows GOARCH=amd64 go build -o windows-amd64.exe ../main.go
+    - name: BuildLinux  
+      run: env GOOS=linux GOARCH=amd64 go build -o linux-amd64 ../main.go
