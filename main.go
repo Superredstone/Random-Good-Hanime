@@ -48,7 +48,7 @@ token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 	//Server///////////////////////////////////////////////
 	go startServer()
 	http.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Nothing to see here...")
+		fmt.Fprintf(w, "Nothing to see here..")
 	})
 	http.HandleFunc("/status", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Currently working")
