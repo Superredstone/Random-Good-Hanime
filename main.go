@@ -6,9 +6,11 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	tb "gopkg.in/tucnak/telebot.v2"
+	"gopkg.in/yaml.v3"
 )
 
 var (
@@ -16,6 +18,32 @@ var (
 )
 
 func main() {
+	//Config///////////////////////////////////////////////
+	if _, err := os.Stat("config.yml"); os.IsNotExist(err) {
+		f, err := os.Create("config.yml")
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		f.WriteString(`port : 8080
+		token : "YOUR TOKEN HERE`)
+	}
+
+	f, err := os.Open("config.yml")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer f.Close()
+
+	var cfg Config
+
+	decoder := yaml.NewDecoder(f)
+	err = decoder.Decode(&cfg)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	//Server///////////////////////////////////////////////
 	go startServer()
 	http.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Nothing to see here...")
@@ -26,6 +54,7 @@ func main() {
 	http.HandleFunc("/", updateLog)
 
 	fmt.Println("Started server on localhost:8080")
+	////////////////////////////////////////////////////////
 	const helpMessage = `SFW
 	/neko
 	/lewdneko
@@ -64,7 +93,7 @@ func main() {
 
 	//Bot options
 	b, err := tb.NewBot(tb.Settings{
-		Token:  "1516177952:AAF-qNuYi6nY9h08ltY_FhILfQzgYadTpVo",
+		Token:  cfg.Token,
 		Poller: &tb.LongPoller{Timeout: 10 * time.Second},
 	})
 	if err != nil {
@@ -316,7 +345,21 @@ func retrieveHentai(parameter string) string {
 }
 
 func startServer() {
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	f, err := os.Open("config.yml")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer f.Close()
+
+	var cfg Config
+
+	decoder := yaml.NewDecoder(f)
+	err = decoder.Decode(&cfg)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	log.Fatal(http.ListenAndServe(":"+cfg.Port, nil))
 }
 
 func updateLog(w http.ResponseWriter, req *http.Request) {
@@ -326,4 +369,9 @@ func updateLog(w http.ResponseWriter, req *http.Request) {
 /////////////////////////////////////////////////////////////
 type Website struct {
 	Url string `json:"url"`
+}
+
+type Config struct {
+	Port  string `yaml:"port"`
+	Token string `yaml:"token"`
 }
