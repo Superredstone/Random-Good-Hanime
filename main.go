@@ -26,12 +26,14 @@ func main() {
 		}
 
 		f.WriteString(`port : 8080
-		token : "YOUR TOKEN HERE`)
+token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 	}
 
 	f, err := os.Open("config.yml")
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Invalid file")
+		f.WriteString(`port : 8080
+token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 	}
 	defer f.Close()
 
