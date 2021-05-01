@@ -11,8 +11,21 @@ import (
 	tb "gopkg.in/tucnak/telebot.v2"
 )
 
+var (
+	Log string
+)
+
 func main() {
-	fmt.Println("Starting bot...")
+	go startServer()
+	http.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Nothing to see here...")
+	})
+	http.HandleFunc("/status", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Currently working")
+	})
+	http.HandleFunc("/", updateLog)
+
+	fmt.Println("Started server on localhost:8080")
 	const helpMessage = `SFW
 	/neko
 	/lewdneko
@@ -276,7 +289,12 @@ func main() {
 func cron(commandToPrint, msgSender string) {
 	dt := time.Now()
 	dtFormatted := dt.Format("01-02-2006 15:04:05")
-	fmt.Println("[" + dtFormatted + "] " + msgSender + " ==> " + commandToPrint + "\n")
+
+	goodFormat := "[" + dtFormatted + "] " + msgSender + " ==> " + commandToPrint + "\n"
+
+	Log = Log + "\n" + goodFormat
+
+	fmt.Println(goodFormat)
 }
 
 func retrieveHentai(parameter string) string {
@@ -295,6 +313,14 @@ func retrieveHentai(parameter string) string {
 	json.Unmarshal(responseData, &data)
 
 	return data.Url
+}
+
+func startServer() {
+	log.Fatal(http.ListenAndServe(":8080", nil))
+}
+
+func updateLog(w http.ResponseWriter, req *http.Request) {
+	fmt.Fprintf(w, Log)
 }
 
 /////////////////////////////////////////////////////////////
