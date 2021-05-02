@@ -56,7 +56,7 @@ token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 	http.HandleFunc("/", updateLog)
 
 	fmt.Println("Started server on localhost:8080")
-	////////////////////////////////////////////////////////
+
 	const helpMessage = `SFW
 	/neko
 	/lewdneko
@@ -326,6 +326,8 @@ func cron(commandToPrint, msgSender string) {
 	Log = Log + "\n" + goodFormat
 
 	fmt.Println(goodFormat)
+
+	writeLogFile()
 }
 
 func retrieveHentai(parameter string) string {
@@ -366,6 +368,15 @@ func startServer() {
 
 func updateLog(w http.ResponseWriter, req *http.Request) {
 	fmt.Fprintf(w, Log)
+}
+
+func writeLogFile() {
+	logFile, err := os.Create("log.txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	logFile.WriteString(Log)
 }
 
 /////////////////////////////////////////////////////////////
