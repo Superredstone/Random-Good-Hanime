@@ -14,6 +14,10 @@ Hentai telegram bot
 - Real time logs 
 - Config file
 
+# Test bot
+Search **@Random_Good_Hanime_bot** on Telegram <br> <br>
+<img src="https://github.com/Superredstone/Random-Good-Hanime/blob/Main/Images/telegramTestBot.png">
+
 # How to build
 ```
 git clone https://github.com/Superredstone/Random-Good-Hanime.git
