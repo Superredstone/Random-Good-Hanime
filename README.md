@@ -22,6 +22,7 @@ Search **@Random_Good_Hanime_bot** on Telegram <br> <br>
 ```
 git clone https://github.com/Superredstone/Random-Good-Hanime.git
 cd Random-Good-Hanime-Main
+go get gopkg.in/tucnak/telebot.v2
 go build main.go
 ```
 
