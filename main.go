@@ -57,13 +57,14 @@ token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 
 	fmt.Println("Started server on localhost:8080")
 
-	const helpMessage = `SFW
+	const helpMessage = `**SFW**
+	/cat 
 	/neko
 	/lewdneko
 	/sfwfoxes
 	/wallpapers
 	/mobileWallpapers
-	NSFW
+	**NSFW**
 	/hentai
 	/ass
 	/bdsm
@@ -310,6 +311,12 @@ token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 		b.Send(m.Sender, photo)
 		cron("/mobileWallpapers", m.Chat.FirstName)
 	})
+	b.Handle("/cat", func(m *tb.Message) {
+		photo := &tb.Photo{File: tb.FromURL(retrieveCat())}
+
+		b.Send(m.Sender, photo)
+		cron("/cat", m.Chat.FirstName)
+	})
 
 	//Start bot
 	fmt.Printf("Bot started\n\n")
@@ -343,6 +350,24 @@ func retrieveHentai(parameter string) string {
 	}
 
 	var data Website
+	json.Unmarshal(responseData, &data)
+
+	return data.Url
+}
+
+func retrieveCat() string {
+	api := "https://aws.random.cat/meow"
+
+	response, err := http.Get(api)
+	if err != nil {
+		fmt.Println(err)
+	}
+	responseData, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	var data catWebsite
 	json.Unmarshal(responseData, &data)
 
 	return data.Url
@@ -382,6 +407,9 @@ func writeLogFile() {
 /////////////////////////////////////////////////////////////
 type Website struct {
 	Url string `json:"url"`
+}
+type catWebsite struct {
+	Url string `json:"file"`
 }
 
 type Config struct {
