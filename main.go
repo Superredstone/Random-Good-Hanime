@@ -105,6 +105,7 @@ token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 	}
 
 	b.Handle("/start", func(m *tb.Message) {
+		b.Send(m.Sender, "Use /help to start watching good animes")
 		cron("/start", m.Chat.FirstName)
 	})
 	b.Handle("/help", func(m *tb.Message) {

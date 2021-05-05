@@ -3,12 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"runtime"
-
-	"github.com/cavaliercoder/grab"
 )
 
 var (
@@ -51,6 +50,8 @@ func checkOs() {
 	}
 
 	fmt.Println("Currently running on: " + runtime.GOOS + " " + runtime.GOARCH)
+
+	filename = filename + ".zip"
 }
 
 func downloadUpdate() {
@@ -65,15 +66,34 @@ func downloadUpdate() {
 		fmt.Println(err)
 	}
 
-	var data Githubapi
-	json.Unmarshal(responseData, &data)
+	var data []Githubapi
+	json.Unmarshal([]byte(responseData), &data)
 
-	file, err := grab.Get(filename, data.Url)
+	fmt.Println(data)
+
+	/*err = DownloadFile(filename, data.Assets.Url)
 	if err != nil {
 		fmt.Println(err)
-	}
+	}*/
 
-	fmt.Println("Downloaded new version: ", file.Filename)
+	fmt.Println("Downloaded new version: ", filename)
+}
+
+func DownloadFile(filepath string, url string) error {
+	resp, err := http.Get(url)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	out, err := os.Create(filepath)
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+
+	_, err = io.Copy(out, resp.Body)
+	return err
 }
 
 func checkHash() {
@@ -81,10 +101,10 @@ func checkHash() {
 }
 
 type Githubapi struct {
-	Url    string `json:"browser_download_url"`
-	Assets assets `json:"assets"`
+	Assets []Assets `json:"assets"`
 }
 
-type assets struct {
-	Url string `json:"browser_download_url"`
+type Assets struct {
+	Url  string `json:"browser_download_url"`
+	Name string `json:"name"`
 }
