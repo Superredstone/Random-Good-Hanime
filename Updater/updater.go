@@ -67,9 +67,10 @@ func downloadUpdate() {
 	var data []Githubapi
 	json.Unmarshal([]byte(responseData), &data)
 
-	for i := 0; i < len(data); i++ {
-		if data[i].Assets[i].Name == filename {
-			downloadUrl = data[i].Assets[i].Url
+	for i := 0; i < len(data[0].Assets); i++ {
+		if data[0].Assets[i].Name == filename {
+			fmt.Println(data[0].Assets[i])
+			downloadUrl = data[0].Assets[i].Url
 
 			break
 		}
