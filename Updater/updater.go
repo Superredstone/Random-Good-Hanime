@@ -11,18 +11,16 @@ import (
 )
 
 var (
-	filename string
+	filename    string
+	downloadUrl string
 )
 
 func main() {
 	checkOs()
 	downloadUpdate()
-	checkHash()
 }
 
 func checkOs() {
-	//Salvare il filename in base al sistema operativo
-
 	if runtime.GOOS == "windows" {
 		if runtime.GOARCH == "amd64" {
 			filename = "RandomHentai-windows-amd64"
@@ -69,14 +67,22 @@ func downloadUpdate() {
 	var data []Githubapi
 	json.Unmarshal([]byte(responseData), &data)
 
-	fmt.Println(data)
+	for i := 0; i < len(data); i++ {
+		if data[i].Assets[i].Name == filename {
+			downloadUrl = data[i].Assets[i].Url
 
-	/*err = DownloadFile(filename, data.Assets.Url)
+			break
+		}
+	}
+
+	err = DownloadFile(filename, downloadUrl)
 	if err != nil {
 		fmt.Println(err)
-	}*/
+	}
 
 	fmt.Println("Downloaded new version: ", filename)
+
+	fmt.Println("Unzip it and replace the old one, if there are problems with the config file delete it")
 }
 
 func DownloadFile(filepath string, url string) error {
@@ -94,10 +100,6 @@ func DownloadFile(filepath string, url string) error {
 
 	_, err = io.Copy(out, resp.Body)
 	return err
-}
-
-func checkHash() {
-	// Controllare l'hash
 }
 
 type Githubapi struct {
