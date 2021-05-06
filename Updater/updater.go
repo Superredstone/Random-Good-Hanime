@@ -23,23 +23,23 @@ func main() {
 func checkOs() {
 	if runtime.GOOS == "windows" {
 		if runtime.GOARCH == "amd64" {
-			filename = "RandomHentai-windows-amd64"
+			filename = "Random-Good-Hanime-windows-amd64"
 		}
 		if runtime.GOARCH == "arm" {
-			filename = "RandomHentai-windows-arm"
+			filename = "Random-Good-Hanime-windows-arm"
 		}
 	}
 	if runtime.GOOS == "linux" {
 		if runtime.GOARCH == "amd64" {
-			filename = "RandomHentai-linux-amd64"
+			filename = "Random-Good-Hanime-linux-amd64"
 		}
 		if runtime.GOARCH == "arm" {
-			filename = "RandomHentai-linux-arm"
+			filename = "Random-Good-Hanime-linux-arm"
 		}
 	}
 	if runtime.GOOS == "darwin" {
 		if runtime.GOARCH == "amd64" {
-			filename = "RandomHentai-darwin-amd64"
+			filename = "Random-Good-Hanime-darwin-amd64"
 		}
 		if runtime.GOARCH == "arm" {
 			fmt.Println("Error, Darwin arm not supported")

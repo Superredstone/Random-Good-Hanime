@@ -47,6 +47,14 @@ token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 
 	//Server///////////////////////////////////////////////
 	go startServer()
+
+	Log = (`
+###################################
+Random-Good-Hanime by Superredstone
+https://github.com/Superredstone
+###################################
+`)
+
 	http.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Nothing to see here..")
 	})
@@ -55,7 +63,13 @@ token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 	})
 	http.HandleFunc("/", updateLog)
 
-	fmt.Println("Started server on localhost:8080")
+	fmt.Println("###################################")
+	fmt.Println("Random-Good-Hanime by Superredstone")
+	fmt.Println("https://github.com/Superredstone")
+	fmt.Println("###################################")
+	fmt.Println("Started server on localhost:" + cfg.Port)
+
+	//helpArray := [...]string{"/neko", "/lewdneko", "/sfwfoxes", "/wallpapers", "/mobileWallpapers", "/hentai", "/ass", "/bdsm", "/cum", "/doujin", "/femdom", "/maid", "/orgy", "/panties", "/nsfwwallpapers", "/nsfwmobilewallpapers", "/netorare", "/git", "/blowjob", "/feet", "/pussy", "/uglybastard", "/uniform", "/gangbang", "/foxgirl", "/cumslut", "/glasses", "/thighs", "/tentacles", "/masturbation", "/school", "/yuri", "/zettairyouiki"}
 
 	const helpMessage = `**SFW**
 	/cat 

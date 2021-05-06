@@ -28,7 +28,7 @@ go build main.go
 
 # TODO
 - ~~Readable README.md~~
-- ~~Updater :arrow_down_small: ~~
+- ~~Updater~~ :arrow_down_small: 
 - Improve config (Idk how)
 
 # License
