@@ -26,6 +26,19 @@ go get gopkg.in/tucnak/telebot.v2
 go build main.go
 ```
 
+# How to start APIs
+```bash
+git clone https://github.com/Superredstone/Random-Good-Hanime.git
+cd Random-Good-Hanime-Main/Images/API/
+pip install simple_image_download
+python3 downloader.py
+npm install express
+node main.js
+```
+
+# APIs written by me
+You can find them on https://random-good-hanime-api.herokuapp.com/
+
 # TODO
 - ~~Love hentais~~
 - ~~Readable README.md~~

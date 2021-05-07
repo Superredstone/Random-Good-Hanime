@@ -80,6 +80,7 @@ https://github.com/Superredstone
 	/mobileWallpapers
 	**NSFW**
 	/hentai
+	/besthentai
 	/ass
 	/bdsm
 	/cum
@@ -295,6 +296,13 @@ https://github.com/Superredstone
 		cron("/zettairyouiki", m.Chat.FirstName)
 	})
 
+	b.Handle("/besthentai", func(m *tb.Message) {
+		photo := &tb.Photo{File: tb.FromURL(retrieveRandomGoodHanimeAPI("random"))}
+
+		b.Send(m.Sender, photo)
+		cron("/besthentai", m.Chat.FirstName)
+	})
+
 	//SFW
 	b.Handle("/neko", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("neko"))}
@@ -369,6 +377,23 @@ func retrieveHentai(parameter string) string {
 
 	return data.Url
 }
+func retrieveRandomGoodHanimeAPI(parameter string) string {
+	api := "https://random-good-hanime-api.herokuapp.com/api/v1/hentai/"
+
+	response, err := http.Get(api + parameter)
+	if err != nil {
+		fmt.Println(err)
+	}
+	responseData, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	var data HentaiAPI
+	json.Unmarshal(responseData, &data)
+
+	return data.File
+}
 
 func retrieveCat() string {
 	api := "https://aws.random.cat/meow"
@@ -423,6 +448,11 @@ func writeLogFile() {
 type Website struct {
 	Url string `json:"url"`
 }
+
+type HentaiAPI struct {
+	File string `json:"file"`
+}
+
 type catWebsite struct {
 	Url string `json:"file"`
 }
