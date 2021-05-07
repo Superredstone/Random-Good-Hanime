@@ -27,8 +27,9 @@ go build main.go
 ```
 
 # TODO
+- ~~Love hentais~~
 - ~~Readable README.md~~
-- ~~Updater~~ :arrow_down_small: 
+- ~~Updater~~ :arrow_down_small:
 - Improve config (Idk how)
 
 # License
