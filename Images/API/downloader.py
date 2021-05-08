@@ -7,4 +7,4 @@ response = simp.simple_image_download
 # Do not change this
 lst=["hentai"] 
 for rep in lst:
-    response().download(rep, downloads, ".jpeg")
+    response().download(rep, downloads)
