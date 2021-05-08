@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/Superredstone/Random-Good-Hanime/Lib"
 	tb "gopkg.in/tucnak/telebot.v2"
 	"gopkg.in/yaml.v3"
 )
@@ -18,6 +19,7 @@ var (
 )
 
 func main() {
+
 	//Config///////////////////////////////////////////////
 	if _, err := os.Stat("config.yml"); os.IsNotExist(err) {
 		f, err := os.Create("config.yml")
@@ -48,12 +50,7 @@ token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 	//Server///////////////////////////////////////////////
 	go startServer()
 
-	Log = (`
-###################################
-Random-Good-Hanime by Superredstone
-https://github.com/Superredstone
-###################################
-`)
+	Log = (Lib.Credits())
 
 	http.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Nothing to see here..")
@@ -63,51 +60,10 @@ https://github.com/Superredstone
 	})
 	http.HandleFunc("/", updateLog)
 
-	fmt.Println("###################################")
-	fmt.Println("Random-Good-Hanime by Superredstone")
-	fmt.Println("https://github.com/Superredstone")
-	fmt.Println("###################################")
+	fmt.Println(Lib.Credits())
 	fmt.Println("Started server on localhost:" + cfg.Port)
 
 	//helpArray := [...]string{"/neko", "/lewdneko", "/sfwfoxes", "/wallpapers", "/mobileWallpapers", "/hentai", "/ass", "/bdsm", "/cum", "/doujin", "/femdom", "/maid", "/orgy", "/panties", "/nsfwwallpapers", "/nsfwmobilewallpapers", "/netorare", "/git", "/blowjob", "/feet", "/pussy", "/uglybastard", "/uniform", "/gangbang", "/foxgirl", "/cumslut", "/glasses", "/thighs", "/tentacles", "/masturbation", "/school", "/yuri", "/zettairyouiki"}
-
-	const helpMessage = `**SFW**
-	/cat 
-	/neko
-	/lewdneko
-	/sfwfoxes
-	/wallpapers
-	/mobileWallpapers
-	**NSFW**
-	/hentai
-	/besthentai
-	/ass
-	/bdsm
-	/cum
-	/doujin
-	/femdom
-	/maid
-	/orgy
-	/panties
-	/nsfwwallpapers
-	/nsfwmobilewallpapers
-	/netorare
-	/gif
-	/blowjob
-	/feet
-	/pussy
-	/uglybastard
-	/uniform
-	/gangbang
-	/foxgirl
-	/cumslut
-	/glasses
-	/thighs
-	/tentacles
-	/masturbation
-	/school
-	/yuri
-	/zettairyouiki`
 
 	//Bot options
 	b, err := tb.NewBot(tb.Settings{
@@ -124,7 +80,7 @@ https://github.com/Superredstone
 		cron("/start", m.Chat.FirstName)
 	})
 	b.Handle("/help", func(m *tb.Message) {
-		b.Send(m.Sender, helpMessage)
+		b.Send(m.Sender, Lib.HelpMessage())
 		cron("/help", m.Chat.FirstName)
 	})
 	b.Handle("/ass", func(m *tb.Message) {
