@@ -77,186 +77,186 @@ token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 
 	b.Handle("/start", func(m *tb.Message) {
 		b.Send(m.Sender, "Use /help to start watching good animes")
-		cron("/start", m.Chat.FirstName)
+		cron("/start", m.Chat.Username)
 	})
 	b.Handle("/help", func(m *tb.Message) {
 		b.Send(m.Sender, Lib.HelpMessage())
-		cron("/help", m.Chat.FirstName)
+		cron("/help", m.Chat.Username)
 	})
 	b.Handle("/ass", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("ass"))}
 
 		b.Send(m.Sender, photo)
-		cron("/ass", m.Chat.FirstName)
+		cron("/ass", m.Chat.Username)
 	})
 	b.Handle("/bdsm", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("bdsm"))}
 
 		b.Send(m.Sender, photo)
-		cron("/bdsm", m.Chat.FirstName)
+		cron("/bdsm", m.Chat.Username)
 	})
 	b.Handle("/cum", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("cum"))}
 
 		b.Send(m.Sender, photo)
-		cron("/cum", m.Chat.FirstName)
+		cron("/cum", m.Chat.Username)
 	})
 	b.Handle("/doujin", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("doujin"))}
 
 		b.Send(m.Sender, photo)
-		cron("/doujin", m.Chat.FirstName)
+		cron("/doujin", m.Chat.Username)
 	})
 	b.Handle("/femdom", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("femdom"))}
 
 		b.Send(m.Sender, photo)
-		cron("/femdom", m.Chat.FirstName)
+		cron("/femdom", m.Chat.Username)
 	})
 	b.Handle("/hentai", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("hentai"))}
 
 		b.Send(m.Sender, photo)
-		cron("/hentai", m.Chat.FirstName)
+		cron("/hentai", m.Chat.Username)
 	})
 	b.Handle("/maid", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("maid"))}
 
 		b.Send(m.Sender, photo)
-		cron("/maid", m.Chat.FirstName)
+		cron("/maid", m.Chat.Username)
 	})
 	b.Handle("/orgy", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("orgy"))}
 
 		b.Send(m.Sender, photo)
-		cron("/orgy", m.Chat.FirstName)
+		cron("/orgy", m.Chat.Username)
 	})
 	b.Handle("/panties", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("panties"))}
 
 		b.Send(m.Sender, photo)
-		cron("/panties", m.Chat.FirstName)
+		cron("/panties", m.Chat.Username)
 	})
 	b.Handle("/nsfwwallpapers", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("nsfwwallpapers"))}
 
 		b.Send(m.Sender, photo)
-		cron("/nsfwwallpapers", m.Chat.FirstName)
+		cron("/nsfwwallpapers", m.Chat.Username)
 	})
 	b.Handle("/nsfwmobilewallpapers", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("nsfwmobilewallpapers"))}
 
 		b.Send(m.Sender, photo)
-		cron("/nsfwmobilewallpapers", m.Chat.FirstName)
+		cron("/nsfwmobilewallpapers", m.Chat.Username)
 	})
 	b.Handle("/netorare", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("netorare"))}
 
 		b.Send(m.Sender, photo)
-		cron("/netorare", m.Chat.FirstName)
+		cron("/netorare", m.Chat.Username)
 	})
 	b.Handle("/gif", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("gif"))}
 
 		b.Send(m.Sender, photo)
-		cron("/gif", m.Chat.FirstName)
+		cron("/gif", m.Chat.Username)
 	})
 	b.Handle("/blowjob", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("blowjob"))}
 
 		b.Send(m.Sender, photo)
-		cron("/blowjob", m.Chat.FirstName)
+		cron("/blowjob", m.Chat.Username)
 	})
 	b.Handle("/feet", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("feet"))}
 
 		b.Send(m.Sender, photo)
-		cron("/feet", m.Chat.FirstName)
+		cron("/feet", m.Chat.Username)
 	})
 	b.Handle("/pussy", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("pussy"))}
 
 		b.Send(m.Sender, photo)
-		cron("/pussy", m.Chat.FirstName)
+		cron("/pussy", m.Chat.Username)
 	})
 	b.Handle("/uglybastard", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("uglybastard"))}
 
 		b.Send(m.Sender, photo)
-		cron("/uglybastard", m.Chat.FirstName)
+		cron("/uglybastard", m.Chat.Username)
 	})
 	b.Handle("/uniform", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("uniform"))}
 
 		b.Send(m.Sender, photo)
-		cron("/uniform", m.Chat.FirstName)
+		cron("/uniform", m.Chat.Username)
 	})
 	b.Handle("/gangbang", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("gangbang"))}
 
 		b.Send(m.Sender, photo)
-		cron("/gangbang", m.Chat.FirstName)
+		cron("/gangbang", m.Chat.Username)
 	})
 	b.Handle("/foxgirl", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("foxgirl"))}
 
 		b.Send(m.Sender, photo)
-		cron("/foxgirl", m.Chat.FirstName)
+		cron("/foxgirl", m.Chat.Username)
 	})
 	b.Handle("/cumslut", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("cumslut"))}
 
 		b.Send(m.Sender, photo)
-		cron("/cumslut", m.Chat.FirstName)
+		cron("/cumslut", m.Chat.Username)
 	})
 	b.Handle("/glasses", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("glasses"))}
 
 		b.Send(m.Sender, photo)
-		cron("/glasses", m.Chat.FirstName)
+		cron("/glasses", m.Chat.Username)
 	})
 	b.Handle("/thighs", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("thighs"))}
 
 		b.Send(m.Sender, photo)
-		cron("/thighs", m.Chat.FirstName)
+		cron("/thighs", m.Chat.Username)
 	})
 	b.Handle("/tentacles", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("tentacles"))}
 
 		b.Send(m.Sender, photo)
-		cron("/tentacles", m.Chat.FirstName)
+		cron("/tentacles", m.Chat.Username)
 	})
 	b.Handle("/masturbation", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("masturbation"))}
 
 		b.Send(m.Sender, photo)
-		cron("/masturbation", m.Chat.FirstName)
+		cron("/masturbation", m.Chat.Username)
 	})
 	b.Handle("/school", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("school"))}
 
 		b.Send(m.Sender, photo)
-		cron("/school", m.Chat.FirstName)
+		cron("/school", m.Chat.Username)
 	})
 	b.Handle("/yuri", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("yuri"))}
 
 		b.Send(m.Sender, photo)
-		cron("/yuri", m.Chat.FirstName)
+		cron("/yuri", m.Chat.Username)
 	})
 	b.Handle("/zettairyouiki", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("zettai-ryouiki"))}
 
 		b.Send(m.Sender, photo)
-		cron("/zettairyouiki", m.Chat.FirstName)
+		cron("/zettairyouiki", m.Chat.Username)
 	})
 
 	b.Handle("/besthentai", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveRandomGoodHanimeAPI("random"))}
 
 		b.Send(m.Sender, photo)
-		cron("/besthentai", m.Chat.FirstName)
+		cron("/besthentai", m.Chat.Username)
 	})
 
 	//SFW
@@ -264,37 +264,37 @@ token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("neko"))}
 
 		b.Send(m.Sender, photo)
-		cron("/neko", m.Chat.FirstName)
+		cron("/neko", m.Chat.Username)
 	})
 	b.Handle("/lewdneko", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("lewdneko"))}
 
 		b.Send(m.Sender, photo)
-		cron("/lewdneko", m.Chat.FirstName)
+		cron("/lewdneko", m.Chat.Username)
 	})
 	b.Handle("/sfwfoxes", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("sfwfoxes"))}
 
 		b.Send(m.Sender, photo)
-		cron("/sfwfoxes", m.Chat.FirstName)
+		cron("/sfwfoxes", m.Chat.Username)
 	})
 	b.Handle("/wallpapers", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("wallpapers"))}
 
 		b.Send(m.Sender, photo)
-		cron("/wallpapers", m.Chat.FirstName)
+		cron("/wallpapers", m.Chat.Username)
 	})
 	b.Handle("/mobileWallpapers", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("mobileWallpapers"))}
 
 		b.Send(m.Sender, photo)
-		cron("/mobileWallpapers", m.Chat.FirstName)
+		cron("/mobileWallpapers", m.Chat.Username)
 	})
 	b.Handle("/cat", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveCat())}
 
 		b.Send(m.Sender, photo)
-		cron("/cat", m.Chat.FirstName)
+		cron("/cat", m.Chat.Username)
 	})
 
 	//Start bot
