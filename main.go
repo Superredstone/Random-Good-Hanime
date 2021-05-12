@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/Superredstone/Random-Good-Hanime/Lib"
@@ -63,7 +64,7 @@ token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 	fmt.Println(Lib.Credits())
 	fmt.Println("Started server on localhost:" + cfg.Port)
 
-	//helpArray := [...]string{"/neko", "/lewdneko", "/sfwfoxes", "/wallpapers", "/mobileWallpapers", "/hentai", "/ass", "/bdsm", "/cum", "/doujin", "/femdom", "/maid", "/orgy", "/panties", "/nsfwwallpapers", "/nsfwmobilewallpapers", "/netorare", "/git", "/blowjob", "/feet", "/pussy", "/uglybastard", "/uniform", "/gangbang", "/foxgirl", "/cumslut", "/glasses", "/thighs", "/tentacles", "/masturbation", "/school", "/yuri", "/zettairyouiki"}
+	helpArray := []string{"/neko", "/lewdneko", "/sfwfoxes", "/wallpapers", "/mobileWallpapers", "/hentai", "/ass", "/bdsm", "/cum", "/doujin", "/femdom", "/maid", "/orgy", "/panties", "/nsfwwallpapers", "/nsfwmobilewallpapers", "/netorare", "/git", "/blowjob", "/feet", "/pussy", "/uglybastard", "/uniform", "/gangbang", "/foxgirl", "/cumslut", "/glasses", "/thighs", "/tentacles", "/masturbation", "/school", "/yuri", "/zettairyouiki"}
 
 	//Bot options
 	b, err := tb.NewBot(tb.Settings{
@@ -71,230 +72,34 @@ token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 		Poller: &tb.LongPoller{Timeout: 10 * time.Second},
 	})
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
 		return
+	}
+
+	//Handle commands
+	for i := 0; i < len(helpArray); i++ {
+		handleCommands(helpArray, b, i)
 	}
 
 	b.Handle("/start", func(m *tb.Message) {
 		b.Send(m.Sender, "Use /help to start watching good animes")
-		cron("/start", m.Chat.Username)
+		cron("/start", m.Chat.Username, m.Chat.FirstName)
 	})
 	b.Handle("/help", func(m *tb.Message) {
 		b.Send(m.Sender, Lib.HelpMessage())
-		cron("/help", m.Chat.Username)
+		cron("/help", m.Chat.Username, m.Chat.FirstName)
 	})
-	b.Handle("/ass", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("ass"))}
-
-		b.Send(m.Sender, photo)
-		cron("/ass", m.Chat.Username)
-	})
-	b.Handle("/bdsm", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("bdsm"))}
-
-		b.Send(m.Sender, photo)
-		cron("/bdsm", m.Chat.Username)
-	})
-	b.Handle("/cum", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("cum"))}
-
-		b.Send(m.Sender, photo)
-		cron("/cum", m.Chat.Username)
-	})
-	b.Handle("/doujin", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("doujin"))}
-
-		b.Send(m.Sender, photo)
-		cron("/doujin", m.Chat.Username)
-	})
-	b.Handle("/femdom", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("femdom"))}
-
-		b.Send(m.Sender, photo)
-		cron("/femdom", m.Chat.Username)
-	})
-	b.Handle("/hentai", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("hentai"))}
-
-		b.Send(m.Sender, photo)
-		cron("/hentai", m.Chat.Username)
-	})
-	b.Handle("/maid", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("maid"))}
-
-		b.Send(m.Sender, photo)
-		cron("/maid", m.Chat.Username)
-	})
-	b.Handle("/orgy", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("orgy"))}
-
-		b.Send(m.Sender, photo)
-		cron("/orgy", m.Chat.Username)
-	})
-	b.Handle("/panties", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("panties"))}
-
-		b.Send(m.Sender, photo)
-		cron("/panties", m.Chat.Username)
-	})
-	b.Handle("/nsfwwallpapers", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("nsfwwallpapers"))}
-
-		b.Send(m.Sender, photo)
-		cron("/nsfwwallpapers", m.Chat.Username)
-	})
-	b.Handle("/nsfwmobilewallpapers", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("nsfwmobilewallpapers"))}
-
-		b.Send(m.Sender, photo)
-		cron("/nsfwmobilewallpapers", m.Chat.Username)
-	})
-	b.Handle("/netorare", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("netorare"))}
-
-		b.Send(m.Sender, photo)
-		cron("/netorare", m.Chat.Username)
-	})
-	b.Handle("/gif", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("gif"))}
-
-		b.Send(m.Sender, photo)
-		cron("/gif", m.Chat.Username)
-	})
-	b.Handle("/blowjob", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("blowjob"))}
-
-		b.Send(m.Sender, photo)
-		cron("/blowjob", m.Chat.Username)
-	})
-	b.Handle("/feet", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("feet"))}
-
-		b.Send(m.Sender, photo)
-		cron("/feet", m.Chat.Username)
-	})
-	b.Handle("/pussy", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("pussy"))}
-
-		b.Send(m.Sender, photo)
-		cron("/pussy", m.Chat.Username)
-	})
-	b.Handle("/uglybastard", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("uglybastard"))}
-
-		b.Send(m.Sender, photo)
-		cron("/uglybastard", m.Chat.Username)
-	})
-	b.Handle("/uniform", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("uniform"))}
-
-		b.Send(m.Sender, photo)
-		cron("/uniform", m.Chat.Username)
-	})
-	b.Handle("/gangbang", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("gangbang"))}
-
-		b.Send(m.Sender, photo)
-		cron("/gangbang", m.Chat.Username)
-	})
-	b.Handle("/foxgirl", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("foxgirl"))}
-
-		b.Send(m.Sender, photo)
-		cron("/foxgirl", m.Chat.Username)
-	})
-	b.Handle("/cumslut", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("cumslut"))}
-
-		b.Send(m.Sender, photo)
-		cron("/cumslut", m.Chat.Username)
-	})
-	b.Handle("/glasses", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("glasses"))}
-
-		b.Send(m.Sender, photo)
-		cron("/glasses", m.Chat.Username)
-	})
-	b.Handle("/thighs", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("thighs"))}
-
-		b.Send(m.Sender, photo)
-		cron("/thighs", m.Chat.Username)
-	})
-	b.Handle("/tentacles", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("tentacles"))}
-
-		b.Send(m.Sender, photo)
-		cron("/tentacles", m.Chat.Username)
-	})
-	b.Handle("/masturbation", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("masturbation"))}
-
-		b.Send(m.Sender, photo)
-		cron("/masturbation", m.Chat.Username)
-	})
-	b.Handle("/school", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("school"))}
-
-		b.Send(m.Sender, photo)
-		cron("/school", m.Chat.Username)
-	})
-	b.Handle("/yuri", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("yuri"))}
-
-		b.Send(m.Sender, photo)
-		cron("/yuri", m.Chat.Username)
-	})
-	b.Handle("/zettairyouiki", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("zettai-ryouiki"))}
-
-		b.Send(m.Sender, photo)
-		cron("/zettairyouiki", m.Chat.Username)
-	})
-
 	b.Handle("/besthentai", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveRandomGoodHanimeAPI("random"))}
 
 		b.Send(m.Sender, photo)
-		cron("/besthentai", m.Chat.Username)
-	})
-
-	//SFW
-	b.Handle("/neko", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("neko"))}
-
-		b.Send(m.Sender, photo)
-		cron("/neko", m.Chat.Username)
-	})
-	b.Handle("/lewdneko", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("lewdneko"))}
-
-		b.Send(m.Sender, photo)
-		cron("/lewdneko", m.Chat.Username)
-	})
-	b.Handle("/sfwfoxes", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("sfwfoxes"))}
-
-		b.Send(m.Sender, photo)
-		cron("/sfwfoxes", m.Chat.Username)
-	})
-	b.Handle("/wallpapers", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("wallpapers"))}
-
-		b.Send(m.Sender, photo)
-		cron("/wallpapers", m.Chat.Username)
-	})
-	b.Handle("/mobileWallpapers", func(m *tb.Message) {
-		photo := &tb.Photo{File: tb.FromURL(retrieveHentai("mobileWallpapers"))}
-
-		b.Send(m.Sender, photo)
-		cron("/mobileWallpapers", m.Chat.Username)
+		cron("/besthentai", m.Chat.Username, m.Chat.FirstName)
 	})
 	b.Handle("/cat", func(m *tb.Message) {
 		photo := &tb.Photo{File: tb.FromURL(retrieveCat())}
 
 		b.Send(m.Sender, photo)
-		cron("/cat", m.Chat.Username)
+		cron("/cat", m.Chat.Username, m.Chat.FirstName)
 	})
 
 	//Start bot
@@ -303,11 +108,22 @@ token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`)
 	b.Start()
 }
 
-func cron(commandToPrint, msgSender string) {
+func handleCommands(helpArray []string, b *tb.Bot, i int) {
+	b.Handle(helpArray[i], func(m *tb.Message) {
+		helpWithoutSlash := strings.Replace(helpArray[i], "/", "", 1)
+
+		photo := &tb.Photo{File: tb.FromURL(retrieveHentai(helpWithoutSlash))}
+
+		b.Send(m.Sender, photo)
+		cron(helpArray[i], m.Chat.Username, m.Chat.FirstName)
+	})
+}
+
+func cron(commandToPrint, msgUsername, msgFirstName string) {
 	dt := time.Now()
 	dtFormatted := dt.Format("01-02-2006 15:04:05")
 
-	goodFormat := "[" + dtFormatted + "] " + msgSender + " ==> " + commandToPrint + "\n"
+	goodFormat := "[" + dtFormatted + "] @" + msgUsername + " " + msgFirstName + " ==> " + commandToPrint + "\n"
 
 	Log = Log + "\n" + goodFormat
 
@@ -388,6 +204,7 @@ func startServer() {
 }
 
 func updateLog(w http.ResponseWriter, req *http.Request) {
+	//Update localhost:{port}
 	fmt.Fprintf(w, Log)
 }
 
