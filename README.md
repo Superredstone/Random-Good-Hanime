@@ -43,7 +43,7 @@ You can find them on https://random-good-hanime-api.herokuapp.com/
 - ~~Love hentais~~
 - ~~Readable README.md~~
 - ~~Updater~~ :arrow_down_small:
-- Improve config (Idk how)
+- ~~Improve performance~~
 
 # License
 GNU GPL V3
