@@ -18,21 +18,32 @@ Hentai Telegram bot for educational purpose :wink:
 Search **@Random_Good_Hanime_bot** on Telegram <br> <br>
 <img src="https://github.com/Superredstone/Random-Good-Hanime/blob/Main/Images/telegramTestBot.png">
 
+# Dependencies
+## Main
+- Telebot V2
+```bash
+go get gopkg.in/tucnak/telebot.v2
+```
+
+## API
+- Node (JS)
+- Express (JS)
+- simple_image_download (Python)
+
 # How to build
+Install dependencies and then: 
 ```bash
 git clone https://github.com/Superredstone/Random-Good-Hanime.git
 cd Random-Good-Hanime-Main
-go get gopkg.in/tucnak/telebot.v2
 go build main.go
 ```
 
-# How to start APIs
+# Deploying APIs
+This part is optional, you don't need that to run the bot
 ```bash
-git clone https://github.com/Superredstone/Random-Good-Hanime.git
-cd Random-Good-Hanime-Main/Images/API/
-pip install simple_image_download
-python3 downloader.py
-npm install express
+git clone https://git.heroku.com/random-good-hanime-api.git
+cd random-good-hanime-api
+python3 downloader.py //Optional, you need that if you want to download new images
 node main.js
 ```
 
