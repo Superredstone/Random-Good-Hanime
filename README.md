@@ -5,32 +5,32 @@
   <img src="https://img.shields.io/discord/821836676607115304?color=Blue&logo=Discord&logoColor=Blue"></img>
 </p>
 
-# Random-Good-Hanime
+# Random-Good-Hanime 
 Hentai Telegram bot for educational purpose :wink:
 
-# Features 
+# Features 	:newspaper:
 - Random hentai 
 - Lot of different categories :yum:
 - Real time logs :scroll:
 - Config file :page_facing_up:
 
-# Test bot
+# Test bot :sweat_drops:
 Search **@Random_Good_Hanime_bot** on Telegram <br> <br>
 <img src="https://github.com/Superredstone/Random-Good-Hanime/blob/Main/Images/telegramTestBot.png">
 
-# Dependencies
+# Dependencies :ghost:	
 ## Main
 - Telebot V2
 ```bash
 go get gopkg.in/tucnak/telebot.v2
 ```
 
-## API
+## API 	:bee:
 - Node (JS)
 - Express (JS)
 - simple_image_download (Python)
 
-# How to build
+# How to build 	:hammer_and_wrench:
 Install dependencies and then: 
 ```bash
 git clone https://github.com/Superredstone/Random-Good-Hanime.git
@@ -50,11 +50,15 @@ node main.js
 # APIs written by me
 You can find them on https://random-good-hanime-api.herokuapp.com/
 
-# TODO
+# TODO 	:white_check_mark:
 - ~~Love hentais~~
 - ~~Readable README.md~~
 - ~~Updater~~ :arrow_down_small:
 - ~~Improve performance~~
+
+# Donate 	:heart:
+Every donation is appriciated <3 <br> <br>
+<a href='https://ko-fi.com/A0A64PC0Y' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 # License
 GNU GPL V3
