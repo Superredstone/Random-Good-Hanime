@@ -149,6 +149,7 @@ func retrieveHentai(parameter string) string {
 
 	return data.Url
 }
+
 func retrieveRandomGoodHanimeAPI(parameter string) string {
 	api := "https://random-good-hanime-api.herokuapp.com/api/v1/hentai/"
 
