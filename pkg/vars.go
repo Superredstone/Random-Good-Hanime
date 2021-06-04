@@ -13,6 +13,9 @@ https://github.com/Superredstone
 ###################################
 `
 
+	StandardConfig = `port : 8080
+token : "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"`
+
 	HelpMessage = `**SFW**
 /neko
 /lewdneko

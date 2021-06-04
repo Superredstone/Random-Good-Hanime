@@ -10,9 +10,11 @@ import (
 )
 
 func main() {
-	Cfg := new(RandomGoodHanime.Config)
-	Cfg.Port = "80"
-	Cfg.Token = "1771420037:AAHrIvi1RFh5aUcID_rkS7EXOvjcCYX77sc"
+	Cfg, err := RandomGoodHanime.ReadConfig()
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 
 	//Start webserver
 	go func() {
