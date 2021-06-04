@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Images/catGirl.jpg" width="20%"></img><br><br>
+  <img src="Assets/icon.jpg" width="20%"></img><br><br>
   <img src="https://github.com/Superredstone/Random-Good-Hanime/actions/workflows/go.yml/badge.svg"></img>
   <img src="https://img.shields.io/github/license/Superredstone/Random-Good-Hanime?color=Green&label=License"></img>
   <img src="https://img.shields.io/discord/821836676607115304?color=Blue&logo=Discord&logoColor=Blue"></img>
@@ -17,7 +17,7 @@ Hentai Telegram bot for educational purpose :wink:
 
 # Test bot :sweat_drops:
 Search **@Random_Good_Hanime_bot** on Telegram <br> <br>
-<img src="https://github.com/Superredstone/Random-Good-Hanime/blob/Main/Images/telegramTestBot.png">
+<img src="https://github.com/Superredstone/Random-Good-Hanime/blob/Main/Assets/TestBot.png">
 
 # Dependencies :ghost:	
 ## Main
