@@ -42,14 +42,14 @@ go build main.go
 # Deploying APIs
 This part is optional, you don't need that to run the bot
 ```bash
-git clone https://git.heroku.com/random-good-hanime-api.git
-cd random-good-hanime-api
-python3 downloader.py //Optional, you need that if you want to download new images
+git clone https://github.com/Superredstone/Random-Good-Hanime.git
+cd Random-Good-Hanime/API
+python3 downloader.py #Simple python script that downloads images from Google Images
 node main.js
 ```
 
 # APIs written by me
-You can find them on https://random-good-hanime-api.herokuapp.com/
+You can find them already deployed at https://random-good-hanime-api.herokuapp.com/
 
 # TODO :white_check_mark:
 - ~~Love hentais~~
